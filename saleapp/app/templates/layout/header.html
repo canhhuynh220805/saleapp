@@ -16,17 +16,23 @@
                 {% endfor %}
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Xin chào fan Ronaldo {{current_user.avatar}}</a>
+                    <a class="nav-link" href="/">
+                        <img src="{{current_user.avatar}}" width="40" class="rounded-circle" />
+                        Chào {{ current_user.username }}!
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Đăng xuất</a>
+                    <a class="nav-link" href="/logout">Đăng xuất</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="/cart">&#128722;<span class="badge bg-danger cart-counter">{{ cart_stats.total_quantity }}</span></a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('login_process')}}">Đăng nhập</a>
+                    <a class="nav-link" href="{{url_for('login_view')}}">Đăng nhập</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Đăng xuất</a>
+                    <a class="nav-link" href="{{url_for('register_view')}}">Đăng ký</a>
                 </li>
                 {% endif %}
             </ul>

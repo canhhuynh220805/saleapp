@@ -11,12 +11,19 @@
                     <h4 class="card-title">{{ p.name }}</h4>
                     <p class="card-text">{{ p.price }} VNĐ</p>
                     <a href="#" class="btn btn-primary " data-bs-toggle="tooltip" title="Đừng ấn vào!">Chi tiết</a>
-                    <button class="btn btn-danger" data-bs-toggle="tooltip" title="Yayyyy!">Đặt hàng</button>
+                    <button class="btn btn-danger" data-bs-toggle="tooltip" title="Yayyyy!" onclick="addCart({{p.id}}, '{{p.name}}', {{p.price}})">Đặt hàng</button>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+    {% if pages > 1%}
+    <ul class="pagination mt-2">
+        {% for i in range(1, pages+1) %}
+        <li class="page-item"><a class="page-link" href="/?page={{ i }}">{{ i }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     {% else %}
     <div class="alert alert-warning">
         KHÔNG CÓ SẢN PHẨM NÀO
